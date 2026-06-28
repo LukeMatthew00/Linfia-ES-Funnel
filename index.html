@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINFIA - Gotas de bienestar para el drenaje linfático</title>
+  <meta name="description" content="¿Sufres de hinchazón y retención de líquidos? Descubre LINFIA, el ritual natural de 30 segundos que ayuda a activar tu drenaje linfático sin diuréticos agresivos.">
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icons for clean premium vectors -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-fill"></div>
+  </div>
+
+  <!-- Custom Glowing Cursor (Follows Mouse pointer with spring physics) -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-glow" id="custom-cursor-glow"></div>
+
+  <!-- ==========================================================================
+       ANNOUNCEMENT BAR (FOMO / Urgency)
+       ========================================================================== -->
+  <div class="announcement-bar">
+    <i class="fa-solid fa-truck-fast"></i> Envíos GRATIS hoy en toda España | 
+    <i class="fa-solid fa-shield-heart"></i> Garantía de Devolución de 60 Días | 
+    <strong>¡Solo quedan <span id="stock-counter">6</span> frascos en stock!</strong>
+  </div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="assets/logo_linfia.png" alt="Linfia" class="logo-img">
+      </a>
+      <a href="#ofertas" class="nav-cta" onclick="scrollToPricing(); return false;">Ver Ofertas</a>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero">
+    <div class="sphere-bg sphere-1"></div>
+    <div class="container">
+      <div class="hero-grid">
+        
+        <div class="hero-content">
+          <span class="badge-new">NUEVO MÉTODO BOTÁNICO</span>
+          <div class="hero-rating">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span><strong>4.8/5</strong> (4,300+ opiniones en España)</span>
+          </div>
+          <h1>Esta hinchazón <span>no es grasa</span> — y por eso la dieta nunca la elimina</h1>
+          <p class="lead">Si te despiertas con el rostro hinchado o sientes que tus zapatos te aprietan al final del día, tu cuerpo no está acumulando grasa: está reteniendo líquidos debido a un "desagüe linfático" lento. LINFIA reactiva tu circulación en un gesto diario de 30 segundos.</p>
+          
+          <div class="hero-trust-badges">
+            <div class="trust-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>Fórmula 100% Natural</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fa-solid fa-flask"></i>
+              <span>Verificado en Laboratorio</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>Garantía de 60 días</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Diagnostic Quiz (Zeigarnik/Goal Gradient) -->
+        <div class="quiz-card tilt-card" id="quiz-card">
+          <div class="quiz-progress-container">
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill"></div>
+            </div>
+            <div class="quiz-progress-text">
+              <span>Evaluando retención de líquidos</span>
+              <span id="progress-percent">25%</span>
+            </div>
+          </div>
+
+          <!-- Step 1 -->
+          <div class="quiz-step active" data-step="1">
+            <h3 class="quiz-question">1. ¿Dónde notas más la retención y pesadez en tu día a día?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option">
+                <input type="radio" name="p1" id="p1-a">
+                <label for="p1-a">Rostro hinchado u ojeras marcadas por las mañanas</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p1" id="p1-b">
+                <label for="p1-b">Tobillos y piernas hinchadas al final de la tarde</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p1" id="p1-c">
+                <label for="p1-c">Abdomen hinchado incluso comiendo limpio y sano</label>
+              </div>
+            </div>
+            <button class="quiz-btn" onclick="nextStep()">Siguiente Pregunta <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="quiz-step" data-step="2">
+            <h3 class="quiz-question">2. ¿Qué métodos has intentado antes sin obtener resultados reales?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option">
+                <input type="radio" name="p2" id="p2-a">
+                <label for="p2-a">Beber más agua, infusiones o diuréticos farmacéuticos</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p2" id="p2-b">
+                <label for="p2-b">Hacer más cardio, sudar o entrenamientos intensos</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p2" id="p2-c">
+                <label for="p2-c">Masajes de drenaje manual o rodillos faciales</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p2" id="p2-d">
+                <label for="p2-d">Restricciones estrictas en la dieta y reducir sal</label>
+              </div>
+            </div>
+            <button class="quiz-btn" onclick="nextStep()">Siguiente Pregunta <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="quiz-step" data-step="3">
+            <h3 class="quiz-question">3. ¿Sientes que haces "todo bien" y aun así tu cuerpo te decepciona?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option">
+                <input type="radio" name="p3" id="p3-a">
+                <label for="p3-a">Sí, me frustra comer bien y seguir viéndome hinchada</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p3" id="p3-b">
+                <label for="p3-b">A veces siento que no es grasa, sino retención acumulada</label>
+              </div>
+              <div class="quiz-option">
+                <input type="radio" name="p3" id="p3-c">
+                <label for="p3-c">Solo busco una solución rápida, cómoda y que no me exija esfuerzo</label>
+              </div>
+            </div>
+            <button class="quiz-btn" onclick="nextStep()">Analizar Mi Perfil <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+          </div>
+
+          <!-- Diagnostic Loading State -->
+          <div id="quiz-loading" class="quiz-loading" style="display: none;">
+            <div class="spinner"></div>
+            <h3 class="quiz-question">Procesando tus respuestas...</h3>
+            <p>Evaluando la capacidad de respuesta de tus capilares linfáticos</p>
+          </div>
+
+          <!-- Result Diagnostic Page -->
+          <div id="quiz-result" class="quiz-result" style="display: none;">
+            <i class="fa-solid fa-circle-check fa-3x"></i>
+            <h3 class="quiz-result-title">¡Diagnóstico Completado con Éxito!</h3>
+            <p class="quiz-result-desc">Tus respuestas indican <strong>Lentitud Linfática Crónica (Bloqueo de Líquido Intersticial)</strong>. Este tipo de hinchazón no responde a quemadores de grasa ordinarios, sino que requiere reactivar el flujo de los vasos linfáticos.</p>
+            
+            <div class="quiz-result-product">
+              <img src="assets/linfia_product.webp?v=4" alt="Gotas de bienestar para el drenaje linfático">
+              <div>
+                <div class="quiz-result-product-title">Linfia - Gotas de Bienestar</div>
+                <div class="quiz-result-product-benefit">Recomendado para tu perfil (97% efectividad)</div>
+              </div>
+            </div>
+
+            <button class="quiz-btn" onclick="scrollToPricing()">Ver Oferta y Empezar Tratamiento <i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       THE PROBLEM (UMP - Unique Mechanism of the Problem)
+       ========================================================================== -->
+  <section class="problem-section section-padding" id="el-problema">
+    <div class="sphere-bg sphere-2"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-new">ESTANCAMIENTO LINFÁTICO</span>
+        <h2>Esta hinchazón no es grasa, es retención de líquidos</h2>
+        <p>La grasa no aparece ni desaparece de un día para otro, a diferencia de los líquidos: por eso el rostro, el abdomen o el cuerpo pueden verse hinchados un día y más deshinchados al día siguiente.</p>
+      </div>
+
+      <div class="problem-grid">
+        
+        <div class="problem-content">
+          <p>Reducir el consumo de azúcares y sal y hacer actividad física actúa sobre las calorías y la grasa, <strong>pero no sobre el drenaje linfático</strong>, que en cambio ayuda a <strong>eliminar el exceso de líquidos</strong> acumulados en los tejidos.</p>
+          <p>A diferencia del sistema cardiovascular, el sistema linfático no tiene una bomba propia como el corazón. Depende totalmente de la contracción muscular y el movimiento para bombear el líquido hacia fuera. Si pasas horas sentada o de pie, tus vasos linfáticos sufren un "retraso" y el líquido se estanca, provocando hinchazón visible en pies, rostro y abdomen.</p>
+          
+          <ul class="problem-list mb-4">
+            <li class="problem-item">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span><strong>El rostro hinchado al despertar:</strong> El líquido se estanca mientras duermes en posición horizontal.</span>
+            </li>
+            <li class="problem-item">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span><strong>Los zapatos que aprietan:</strong> La gravedad acumula la linfa en tus tobillos tras una jornada larga.</span>
+            </li>
+          </ul>
+
+          <div style="text-align: center;">
+            <img src="assets/giphy_1.gif" alt="Drenaje Linfático en Acción" style="border-radius: var(--radius-md); box-shadow: var(--shadow-md); width: 100%; max-width: 440px; display: inline-block;">
+          </div>
+        </div>
+
+        <!-- Tactile Liquid Weight Calculator -->
+        <div class="glass-card calculator-card tilt-card">
+          <div class="calculator-header">
+            <span class="pulse-dot"></span>
+            Simulador de Retención Linfática
+          </div>
+          
+          <div class="calc-group">
+            <div class="calc-label-row">
+              <span class="calc-label">Horas al día sentada o de pie:</span>
+              <span class="calc-value" id="calc-hours-val">8 horas</span>
+            </div>
+            <div class="slider-container">
+              <input type="range" min="2" max="14" step="1" value="8" class="range-slider" id="calc-hours-slider">
+            </div>
+          </div>
+
+          <div class="calc-results-grid">
+            <div class="calc-result-item">
+              <div class="result-label">Líquido Estancado Estimado:</div>
+              <div class="result-number" id="calc-fluid-weight">2.4 kg</div>
+              <p class="result-explanation">Peso extra acumulado en tejidos intersticiales (no es grasa).</p>
+            </div>
+            
+            <div class="calc-result-item">
+              <div class="result-label">Bloqueo de Flujo Capilar:</div>
+              <div class="result-number" id="calc-blockage-rate">68%</div>
+              <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="calc-progress-fill"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="calc-gauge-container">
+            <svg viewBox="0 0 200 40" width="100%" height="40" class="capillary-gauge">
+              <!-- Background tube -->
+              <path d="M 10,20 L 190,20" stroke="#edf2f7" stroke-width="12" stroke-linecap="round"></path>
+              <!-- Flowing particles path -->
+              <path id="capillary-path" d="M 10,20 L 190,20" stroke="var(--primary)" stroke-width="8" stroke-linecap="round" stroke-dasharray="8, 12"></path>
+              <!-- Constriction overlay -->
+              <circle id="constriction-point" cx="100" cy="20" r="12" fill="rgba(223, 154, 40, 0.3)" stroke="var(--secondary)" stroke-width="2"></circle>
+            </svg>
+            <div class="calc-gauge-label">Simulación de Vaso Linfático (Constricción y flujo de linfa)</div>
+          </div>
+
+          <button class="pricing-cta mt-3" onclick="scrollToPricing()" style="width: 100%;">Reactivar Mi Flujo Linfático Ahora</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       THE SOLUTION (UMS - Unique Mechanism of the Solution)
+       ========================================================================== -->
+  <section class="solution-section section-padding" id="la-solucion">
+    <div class="container">
+      <div class="solution-grid">
+        
+        <div class="solution-image tilt-card">
+          <img src="assets/linfia_product.webp?v=4" alt="Linfia Gotas de Bienestar">
+        </div>
+
+        <div class="solution-content">
+          <span class="badge-new">EL RITUAL DIARIO</span>
+          <h2>El sencillo ritual diario que ayuda a reducir la hinchazón y la retención de líquidos</h2>
+          <p class="lead">Las gotas Linfia ayudan a tu cuerpo a eliminar suavemente los líquidos retenidos, para una sensación de ligereza, deshinchazón y bienestar cada día.</p>
+          <p class="mb-4">Unas pocas gotas antes de dormir favorecen el drenaje natural, la circulación y el equilibrio hídrico. Un gesto sencillo. Una diferencia visible. Linfia estimula tus capilares linfáticos de forma 100% natural, sin alterar tu ritmo urinario.</p>
+          
+          <div class="solution-features">
+            <div class="feature-card tilt-card">
+              <div class="feature-card-icon"><i class="fa-solid fa-droplet"></i></div>
+              <h4>Galio (Cleavers)</h4>
+              <p>Favorecen el flujo linfático y una depuración profunda pero delicada del cuerpo.</p>
+            </div>
+            <div class="feature-card tilt-card">
+              <div class="feature-card-icon"><i class="fa-solid fa-spa"></i></div>
+              <h4>Trébol Rojo</h4>
+              <p>Contribuye a una circulación saludable y a una piel radiante y luminosa.</p>
+            </div>
+            <div class="feature-card tilt-card">
+              <div class="feature-card-icon"><i class="fa-solid fa-leaf"></i></div>
+              <h4>Fresno Espinoso</h4>
+              <p>Aumenta la energía natural y favorece la microcirculación celular.</p>
+            </div>
+            <div class="feature-card tilt-card">
+              <div class="feature-card-icon"><i class="fa-solid fa-seedling"></i></div>
+              <h4>Raíz de Stillingia</h4>
+              <p>Ayuda a la desintoxicación natural y al drenaje eficaz del exceso de líquidos.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       COMPARISON TABLE
+       ========================================================================== -->
+  <section class="comparison-section section-padding">
+    <div class="container">
+      <div class="section-header">
+        <h2>¿Cómo se compara LINFIA con otras opciones?</h2>
+        <p>Evaluamos rigurosamente el impacto de LINFIA frente a las alternativas tradicionales del mercado.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th class="highlight">LINFIA Gotas</th>
+              <th>Diuréticos Farmacia</th>
+              <th>Infusiones Drenantes</th>
+              <th>Masaje Vodder Manual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Específico para Linfa</strong></td>
+              <td class="highlight"><span class="check"><i class="fa-solid fa-circle-check"></i> Sí</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> No (renal)</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> No (general)</span></td>
+              <td><span class="check"><i class="fa-solid fa-circle-check"></i> Sí</span></td>
+            </tr>
+            <tr>
+              <td><strong>Comodidad diaria</strong></td>
+              <td class="highlight"><span class="check"><i class="fa-solid fa-circle-check"></i> Alta (30 seg)</span></td>
+              <td><span class="check"><i class="fa-solid fa-circle-check"></i> Alta</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Baja (preparación)</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Baja (citas/viajes)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Efectos secundarios</strong></td>
+              <td class="highlight"><span class="check"><i class="fa-solid fa-circle-check"></i> Ninguno</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Deshidratación, urgencia</span></td>
+              <td><span class="check"><i class="fa-solid fa-circle-check"></i> Leves</span></td>
+              <td><span class="check"><i class="fa-solid fa-circle-check"></i> Ninguno</span></td>
+            </tr>
+            <tr>
+              <td><strong>Costo mensual medio</strong></td>
+              <td class="highlight"><strong>16,60€ - 24,90€</strong></td>
+              <td>12,00€ - 20,00€</td>
+              <td>5,00€ - 15,00€</td>
+              <td>150,00€ - 400,00€</td>
+            </tr>
+            <tr>
+              <td><strong>Garantía de Satisfacción</strong></td>
+              <td class="highlight"><span class="check"><i class="fa-solid fa-circle-check"></i> 60 Días</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Sin garantía</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Sin garantía</span></td>
+              <td><span class="cross"><i class="fa-solid fa-circle-xmark"></i> Sin garantía</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PRICING SECTION (Decoy / Anchoring)
+       ========================================================================== -->
+  <section class="pricing-section section-padding" id="ofertas">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge-new">OFERTAS DE LANZAMIENTO</span>
+        <h2>Elige tu plan de reactivación linfática</h2>
+        <p>Asegura tu pack hoy con envío gratuito a toda España. Recomendamos el plan de 3 meses para completar un ciclo biológico celular.</p>
+      </div>
+
+      <div class="pricing-grid">
+        
+        <!-- Pack 1 -->
+        <div class="pricing-card tilt-card">
+          <div class="pricing-card-header">
+            <h3 class="pricing-title">Tratamiento 1 Mes</h3>
+            <p class="pricing-pack-desc">Pack Descubrimiento</p>
+            <div class="pricing-price-container">
+              <span class="price-strike">39,90€</span>
+              <span class="price-actual">24,90€</span>
+            </div>
+            <p class="pricing-savings">Ahorras 15,00€</p>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> 1 frasco de LINFIA Gotas</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Envío rápido gratis (24-48h)</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Garantía de reembolso de 60 días</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Sabor a miel natural</li>
+          </ul>
+          <button class="pricing-cta" onclick="buyBundle('1 Mes Descubrimiento', '24.90')">Probar LINFIA</button>
+        </div>
+
+        <!-- Pack 2 (Popular - Decoy Target) -->
+        <div class="pricing-card popular tilt-card">
+          <span class="pricing-badge">MÁS POPULAR (2+1 GRATIS)</span>
+          <div class="pricing-card-header">
+            <h3 class="pricing-title">Tratamiento 3 Meses</h3>
+            <p class="pricing-pack-desc">Ciclo de Renovación Linfática</p>
+            <div class="pricing-price-container">
+              <span class="price-strike">119,70€</span>
+              <span class="price-actual">49,80€</span>
+            </div>
+            <p class="pricing-savings">Ahorras 69,90€ (Te sale a 16,60€/mes)</p>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> <strong>3 frascos</strong> de LINFIA Gotas (2+1 Gratis)</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Envío Urgente GRATIS</strong></li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Garantía de reembolso de 60 días</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Asesoría de uso por WhatsApp</li>
+          </ul>
+          <button class="pricing-cta" onclick="buyBundle('3 Meses (2+1 GRATIS)', '49.80')">Obtener Mi Frasco Gratis</button>
+        </div>
+
+        <!-- Pack 3 -->
+        <div class="pricing-card tilt-card">
+          <div class="pricing-card-header">
+            <h3 class="pricing-title">Tratamiento 5 Meses</h3>
+            <p class="pricing-pack-desc">Pack Transformación Total</p>
+            <div class="pricing-price-container">
+              <span class="price-strike">199,50€</span>
+              <span class="price-actual">74,70€</span>
+            </div>
+            <p class="pricing-savings">Ahorras 124,80€ (3+2 Gratis)</p>
+          </div>
+          <ul class="pricing-features">
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> <strong>5 frascos</strong> de LINFIA Gotas (3+2 Gratis)</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> <strong>Cepillo exfoliante linfático GRATIS</strong></li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Envío rápido gratis (24-48h)</li>
+            <li class="pricing-feature-item"><i class="fa-solid fa-circle-check"></i> Garantía de reembolso de 60 días</li>
+          </ul>
+          <button class="pricing-cta" onclick="buyBundle('5 Meses (3+2 GRATIS)', '74.70')">Comenzar Transformación</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TESTIMONIALS SECTION (Social Proof)
+       ========================================================================== -->
+  <section class="testimonials-section section-padding" id="opiniones">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lo que dicen las mujeres que ya han probado LINFIA</h2>
+        <p>Resultados reales compartidos por nuestra comunidad en España e Italia.</p>
+      </div>
+
+      <div class="overall-rating-card">
+        <div class="rating-number">4.7 / 5</div>
+        <div class="stars rating-stars">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+        <p>Basado en más de <strong>4.348 opiniones verificadas</strong> de clientas satisfechas.</p>
+      </div>
+
+      <!-- UGC Video Grid from Storefront -->
+      <div class="video-container mb-5">
+        <div class="video-item">
+          <video autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/videos/c/o/v/dc7e19cfb7074ae7bc9acc25f3136e35.mov" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-item">
+          <video autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/videos/c/o/v/24bcbefe572647ad86d67b86d1abaed7.mov" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-item">
+          <video autoplay muted loop playsinline>
+            <source src="https://cdn.shopify.com/videos/c/o/v/149db40cbcac46bbb3276cb5b0c7b813.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <span class="testimonial-author">Martina B.</span>
+            <span class="testimonial-date">Hace 1 semana</span>
+          </div>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-body">"Empecé el tratamiento hace una semana y ya he notado que mi rostro se ve más deshinchado y más estilizado. Me despierto mucho mejor y con menos retención bajo los ojos."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <span class="testimonial-author">Sara F.</span>
+            <span class="testimonial-date">Hace 3 semanas</span>
+          </div>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-body">"Lo añado a mi agua cada mañana y lo ha cambiado todo. Menos hinchazón en piernas después de trabajar de pie, digestión más ligera y una luminosidad en la piel increíble."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <span class="testimonial-author">Elena D.</span>
+            <span class="testimonial-date">Hace 1 mes</span>
+          </div>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-body">"Mi abdomen está mucho más plano y ya no tengo esa sensación de sentirme 'apretada' en la ropa. Al final del día, mis piernas están deshinchadas y ligeras. Un verdadero alivio."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FAQ SECTION (Objection Handling)
+       ========================================================================== -->
+  <section class="faq-section section-padding" id="preguntas-frecuentes">
+    <div class="container">
+      <div class="section-header">
+        <h2>Preguntas Frecuentes</h2>
+        <p>Resolvemos todas tus dudas sobre LINFIA y el cuidado de tu sistema linfático.</p>
+      </div>
+
+      <div class="faq-wrapper">
+        
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Es esto solo un diurético disfrazado?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              No. Los diuréticos tradicionales actúan sobre los riñones forzando la expulsión de agua, lo que causa deshidratación y urgencia constante para ir al baño. LINFIA actúa sobre el sistema linfático mismo, estimulando las contracciones de los vasos linfáticos para drenar el líquido retenido de forma natural sin deshidratar el organismo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Por qué no simplemente beber más agua o comer menos sal?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La sal y la hidratación influyen en la presión osmótica de tus células, pero el sistema linfático es un circuito independiente. Si tus capilares linfáticos están lentos o bloqueados debido a una vida sedentaria o mala circulación, beber más agua solo aumentará el volumen de fluido estancado en tus tejidos. LINFIA estimula la circulación de ese sistema independiente.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>He probado todo y nada me funciona, ¿por qué LINFIA sí?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La mayoría de los suplementos que has probado están formulados para la pérdida de grasa o digestión general. Si tu hinchazón se debe a la linfa estancada, esos productos no tocan el origen. LINFIA es la primera fórmula específica en gotas diseñada únicamente para desbloquear y activar el drenaje de los capilares linfáticos.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Los ingredientes son seguros? ¿Cuáles son?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Sí, LINFIA es 100% natural, formulado sin aditivos químicos. Contiene extractos puros de Gallo Ajorero, Raíz de Dillinja, Flor de Trébol Rojo y Corteza vegetal. Todo el lote está verificado en laboratorio y cumple estrictamente con el Real Decreto 1487/2009 en España. <em>Nota: No se recomienda su uso durante el embarazo.</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Cuánto tardaré en ver resultados?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              La mayoría de las mujeres empieza a notar una disminución en la hinchazón del rostro por las mañanas y mayor ligereza en las piernas en un plazo de 7 a 14 días de uso continuo.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>¿Qué pasa si no me funciona? ¿Tengo garantía?</span>
+            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Confiamos tanto en la fórmula que ofrecemos una garantía incondicional de 60 días ("Satisfecha o Reembolsada"). Si tras usar LINFIA durante un mes no notas menos hinchazón, te devolvemos el 100% de tu dinero sin preguntas.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GUARANTEE BAR
+       ========================================================================== -->
+  <section class="guarantee-bar">
+    <div class="container">
+      <div class="guarantee-grid">
+        <div class="guarantee-icon">
+          <i class="fa-solid fa-shield-halved fa-4x" style="color: var(--secondary)"></i>
+        </div>
+        <div class="guarantee-text">
+          <h3>Garantía de Devolución Sin Riesgos de 60 Días</h3>
+          <p>Queremos que pruebes LINFIA con absoluta tranquilidad. Tienes 60 días completos para evaluar tu progreso. Si no despiertas viéndote más ligera, deshinchada y a gusto con tu cuerpo, escríbenos un correo y gestionaremos tu devolución íntegra de inmediato.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 LINFIA (linfia-es.com). Todos los derechos reservados. Uso interno exclusivo.</p>
+      <div class="footer-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       STICKY MOBILE CTA BAR (FOMO / Convenience)
+       ========================================================================== -->
+  <div class="sticky-cta-bar">
+    <div class="sticky-cta-info">
+      <div class="sticky-cta-title">Tratamiento 3 Meses (2+1 Gratis)</div>
+      <div class="sticky-cta-price">49,80€</div>
+    </div>
+    <button class="sticky-cta-btn" onclick="scrollToPricing()">Pedir Ahora</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
